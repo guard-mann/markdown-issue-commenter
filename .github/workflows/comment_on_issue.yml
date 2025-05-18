@@ -1,0 +1,40 @@
+name: Comment on Issue when progress is updated
+
+on:
+  push:
+    paths:
+      - 'docs/issue_updates/*.md'
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Find updated files and post comment
+        run: |
+          echo "Checking for updated issue progress files..."
+          files=$(git ls-files docs/issue_updates/*.md)
+
+          echo "Files detected:"
+          echo "$files"
+
+          for file in $files; do
+            issue_number=$(basename "$file" .md)
+            echo "Target Issue: #$issue_number"
+
+            body=$(cat "$file" | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
+
+            echo "Posting comment to Issue #$issue_number"
+            curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/issues/$issue_number/comments \
+              -d "{\"body\": \"$body\"}"
+          done
