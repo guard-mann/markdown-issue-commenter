@@ -23,12 +23,12 @@ git clone https://github.com/yourname/markdown-issue-commenter.git
 cd markdown-issue-commenter
 ```
 
-2. Add a markdown file under docs/issue_updates/:
+### 2. Add a markdown file under docs/issue_updates/:
 ```markdown
 // docs/issue_updates/42.md
 This is an auto-posted comment for Issue #42.
 ```
-3. Push your changes:
+### 3. Push your changes:
 ```bash
 git add docs/issue_updates/42.md
 git commit -m "Add comment for issue #42"
