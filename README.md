@@ -7,7 +7,7 @@ Useful for collaborative discussions, AI-generated logs, review notes, and docum
 
 ## Features
 
-- Write comments in markdown files (e.g., `docs/issue_updates/1.md`)
+- Write comments in markdown files (e.g. `docs/issue_updates/1.md`)
 - Automatically post them to GitHub Issue of corresponding No. (e.g. issue #1) via GitHub Actions
 - Fully Git-tracked: keep comment history with commits
 - No need to open the GitHub UI manually — just `git push`
