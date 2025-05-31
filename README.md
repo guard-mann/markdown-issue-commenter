@@ -11,6 +11,7 @@ Useful for collaborative discussions, AI-generated logs, review notes, and docum
 - Automatically post them to GitHub Issue of corresponding No. (e.g. issue #1) via GitHub Actions
 - Fully Git-tracked: keep comment history with commits
 - No need to open the GitHub UI manually — just `git push`
+- Collect particular sequence like and connect it with milestone and plot figure.
 
 ---
 
